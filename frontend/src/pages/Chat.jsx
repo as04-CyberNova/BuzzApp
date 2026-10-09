@@ -155,18 +155,30 @@ function Chat() {
           // Ensure we correctly get the sender ID whether it's an object or a string
           const senderId = msg.sender && typeof msg.sender === 'object' ? msg.sender._id : msg.sender;
           const isCurrentUser = senderId === user._id;
+          const isSenderOnline = onlineUsers.includes(senderId);
           
           return (
             <div key={msg._id || index} className={`flex flex-col ${isCurrentUser ? 'items-end' : 'items-start'}`}>
               {!isCurrentUser && msg.sender && msg.sender.name && (
-                <span className="text-xs text-slate-400 ml-2 mb-1 font-medium">{msg.sender.name}</span>
+                <div className="flex items-center gap-2 ml-2 mb-1">
+                  <span className="text-xs text-slate-500 font-semibold">{msg.sender.name}</span>
+                  <div className="flex items-center gap-1">
+                    <span className={`w-1.5 h-1.5 rounded-full ${isSenderOnline ? 'bg-green-500' : 'bg-slate-300'}`}></span>
+                    <span className="text-[10px] text-slate-400 font-medium">
+                      {isSenderOnline ? 'Online' : 'Offline'}
+                    </span>
+                  </div>
+                </div>
               )}
-              <div className={`max-w-[75%] px-5 py-3 rounded-2xl ${
+              <div className={`max-w-[75%] px-5 py-3 rounded-2xl flex flex-col gap-1 ${
                 isCurrentUser 
                   ? 'bg-primary-600 text-white rounded-br-sm shadow-md shadow-primary-500/20' 
                   : 'bg-white dark:bg-surface-800 text-slate-800 dark:text-slate-200 border border-slate-100 dark:border-surface-700 rounded-bl-sm shadow-sm'
               }`}>
-                {msg.content}
+                <span>{msg.content}</span>
+                <span className={`text-[10px] self-end ${isCurrentUser ? 'text-primary-100' : 'text-slate-400'}`}>
+                  {msg.createdAt ? new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </span>
               </div>
             </div>
           );
