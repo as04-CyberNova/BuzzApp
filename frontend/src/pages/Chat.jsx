@@ -126,7 +126,7 @@ function Chat() {
   return (
     <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex flex-col h-[100dvh]">
       {/* Navbar */}
-      <nav className="glass-panel flex-none px-6 py-4 flex items-center justify-between border-b-0 rounded-none rounded-b-2xl z-10 sticky top-0">
+      <nav className="clay-panel flex-none px-6 py-4 flex items-center justify-between border-b-0 rounded-none rounded-b-3xl z-10 sticky top-0">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-tr from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,7 +152,7 @@ function Chat() {
           </button>
           <button 
             onClick={handleLogout}
-            className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-surface-800 rounded-lg transition-colors"
+            className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-surface-700 rounded-xl transition-colors shadow-inner"
           >
             Logout
           </button>
@@ -180,10 +180,10 @@ function Chat() {
                   </div>
                 </div>
               )}
-              <div className={`max-w-[75%] px-5 py-3 rounded-2xl flex flex-col gap-1 ${
+              <div className={`max-w-[75%] px-5 py-3 rounded-3xl flex flex-col gap-1 ${
                 isCurrentUser 
-                  ? 'bg-primary-600 text-white rounded-br-sm shadow-md shadow-primary-500/20' 
-                  : 'bg-white dark:bg-surface-800 text-slate-800 dark:text-slate-200 border border-slate-100 dark:border-surface-700 rounded-bl-sm shadow-sm'
+                  ? 'clay-msg-sender rounded-br-sm' 
+                  : 'clay-msg-receiver rounded-bl-sm'
               }`}>
                 <span>{msg.content}</span>
                 <span className={`text-[10px] self-end ${isCurrentUser ? 'text-primary-100' : 'text-slate-400'}`}>
@@ -197,19 +197,19 @@ function Chat() {
       </main>
 
       {/* Input Area */}
-      <footer className="glass-panel flex-none p-4 rounded-none rounded-t-3xl border-t-0 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.3)]">
+      <footer className="clay-panel flex-none p-4 rounded-none rounded-t-3xl border-t-0">
         <form onSubmit={handleSend} className="flex gap-2 max-w-4xl mx-auto">
           <input 
             type="text" 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message..." 
-            className="flex-1 bg-white dark:bg-surface-800 border border-slate-200 dark:border-surface-700 rounded-full px-6 py-4 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none shadow-sm transition-all"
+            className="clay-input flex-1 rounded-full px-6 py-4"
             autoComplete="off"
           />
           <button 
             type="submit"
-            className="bg-primary-600 hover:bg-primary-500 text-white p-4 rounded-full transition-all duration-200 shadow-lg shadow-primary-500/30 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="clay-btn p-4 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!input.trim()}
           >
             <svg className="w-6 h-6 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -36,7 +36,7 @@ function Login() {
 
   return (
     <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
-      <div className="glass-panel max-w-md w-full rounded-3xl p-8 transition-bounce">
+      <div className="clay-panel max-w-md w-full p-8 transition-bounce">
         <div className="mb-8">
           <Link to="/" className="inline-flex items-center text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors mb-6">
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@ function Login() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-surface-800 border border-slate-200 dark:border-surface-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all"
+              className="clay-input"
               placeholder="you@example.com"
             />
           </div>
@@ -70,14 +70,14 @@ function Login() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-surface-800 border border-slate-200 dark:border-surface-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all"
+              className="clay-input"
               placeholder="••••••••"
             />
           </div>
 
           <button 
             type="submit" 
-            className="w-full py-3 px-4 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-xl transition-colors duration-200 shadow-lg shadow-primary-500/20 mt-6"
+            className="clay-btn w-full mt-6"
           >
             Sign In
           </button>
