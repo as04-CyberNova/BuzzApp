@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { API_URL, SOCKET_URL } from '../config';
 
-const socket = io('https://buzzapp.onrender.com');
+const socket = io(SOCKET_URL);
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -24,7 +25,7 @@ function Chat() {
     setUser(storedUser);
 
     // Fetch message history
-    fetch('https://buzzapp.onrender.com/api/messages')
+    fetch(`${API_URL}/api/messages`)
       .then(res => res.json())
       .then(data => {
         setMessages(data);
@@ -89,7 +90,7 @@ function Chat() {
   const handleClearChat = async () => {
     if (window.confirm("Are you sure you want to clear the entire chat history for everyone?")) {
       try {
-        await fetch('https://buzzapp.onrender.com/api/messages', { method: 'DELETE' });
+        await fetch(`${API_URL}/api/messages`, { method: 'DELETE' });
         socket.emit('clearChat');
       } catch (err) {
         console.error('Failed to clear chat', err);
