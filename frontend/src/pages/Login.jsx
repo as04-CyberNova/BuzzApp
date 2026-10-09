@@ -35,7 +35,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
+    <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
       <div className="glass-panel max-w-md w-full rounded-3xl p-8 transition-bounce">
         <div className="mb-8">
           <Link to="/" className="inline-flex items-center text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors mb-6">

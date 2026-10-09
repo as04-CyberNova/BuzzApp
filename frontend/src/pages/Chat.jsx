@@ -114,7 +114,7 @@ function Chat() {
   const chatSubtitle = otherUserMsg ? (isOnline ? 'Online' : 'Offline') : 'Waiting for others...';
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-surface-900 flex flex-col h-screen">
+    <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex flex-col h-[100dvh]">
       {/* Navbar */}
       <nav className="glass-panel flex-none px-6 py-4 flex items-center justify-between border-b-0 rounded-none rounded-b-2xl z-10 sticky top-0">
         <div className="flex items-center gap-3">

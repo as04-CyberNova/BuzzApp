@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
+    <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
       <div className="glass-panel max-w-md w-full rounded-3xl p-8 transition-bounce hover-lift">
         <div className="flex flex-col items-center">
           <div className="w-16 h-16 bg-gradient-to-tr from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg shadow-primary-500/30 mb-6">
