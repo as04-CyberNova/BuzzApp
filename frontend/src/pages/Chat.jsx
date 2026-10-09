@@ -36,9 +36,18 @@ function Chat() {
 
   // Handle Socket events
   useEffect(() => {
-    if (user) {
+    if (!user) return;
+
+    const handleConnect = () => {
       socket.emit('join', user._id);
+    };
+
+    // If socket is already connected when this runs
+    if (socket.connected) {
+      handleConnect();
     }
+
+    socket.on('connect', handleConnect);
 
     socket.on('onlineUsers', (users) => {
       setOnlineUsers(users);
@@ -53,6 +62,7 @@ function Chat() {
     });
 
     return () => {
+      socket.off('connect', handleConnect);
       socket.off('onlineUsers');
       socket.off('receiveMessage');
       socket.off('chatCleared');
@@ -159,8 +169,8 @@ function Chat() {
           
           return (
             <div key={msg._id || index} className={`flex flex-col ${isCurrentUser ? 'items-end' : 'items-start'}`}>
-              {!isCurrentUser && msg.sender && msg.sender.name && (
-                <div className="flex items-center gap-2 ml-2 mb-1">
+              {msg.sender && msg.sender.name && (
+                <div className={`flex items-center gap-2 mb-1 ${isCurrentUser ? 'mr-2 flex-row-reverse' : 'ml-2'}`}>
                   <span className="text-xs text-slate-500 font-semibold">{msg.sender.name}</span>
                   <div className="flex items-center gap-1">
                     <span className={`w-1.5 h-1.5 rounded-full ${isSenderOnline ? 'bg-green-500' : 'bg-slate-300'}`}></span>
