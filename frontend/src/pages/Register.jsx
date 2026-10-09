@@ -36,8 +36,8 @@ function Register() {
   };
 
   return (
-    <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
-      <div className="clay-panel max-w-md w-full p-8 transition-bounce">
+    <div className="min-h-[100dvh] bg-transparent flex items-center justify-center p-4">
+      <div className="liquid-glass-panel max-w-md w-full p-8 rounded-3xl transition-bounce">
         <div className="mb-8">
           <Link to="/" className="inline-flex items-center text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors mb-6">
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ function Register() {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="clay-input"
+              className="liquid-glass-input"
               placeholder="John Doe"
             />
           </div>
@@ -71,7 +71,7 @@ function Register() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="clay-input"
+              className="liquid-glass-input"
               placeholder="you@example.com"
             />
           </div>
@@ -84,14 +84,14 @@ function Register() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="clay-input"
+              className="liquid-glass-input"
               placeholder="Create a strong password"
             />
           </div>
 
           <button 
             type="submit" 
-            className="clay-btn w-full mt-6"
+            className="liquid-glass-btn w-full mt-6"
           >
             Create Account
           </button>

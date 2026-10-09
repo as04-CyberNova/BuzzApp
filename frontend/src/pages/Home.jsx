@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex items-center justify-center p-4">
-      <div className="clay-panel max-w-md w-full p-8 transition-bounce hover-lift">
+    <div className="min-h-[100dvh] bg-transparent flex items-center justify-center p-4">
+      <div className="liquid-glass-panel max-w-md w-full p-8 rounded-3xl transition-bounce hover-lift">
         <div className="flex flex-col items-center">
           <div className="w-16 h-16 bg-gradient-to-tr from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg shadow-primary-500/30 mb-6">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,11 +16,11 @@ function Home() {
             Next generation secure messaging with intelligent spam protection.
           </p>
           
-          <Link to="/register" className="clay-btn w-full text-center mb-4 block">
+          <Link to="/register" className="liquid-glass-btn w-full text-center mb-4 block">
             Create Account
           </Link>
           
-          <Link to="/login" className="w-full text-center py-3 px-4 bg-slate-200 dark:bg-surface-700 hover:bg-slate-300 dark:hover:bg-surface-800 text-slate-800 dark:text-slate-200 font-bold rounded-2xl transition-colors duration-200 block shadow-inner">
+          <Link to="/login" className="w-full text-center py-3 px-4 bg-white/20 dark:bg-black/20 hover:bg-white/30 dark:hover:bg-black/30 backdrop-blur-md border border-white/40 dark:border-white/10 text-slate-800 dark:text-slate-200 font-bold rounded-2xl transition-colors duration-200 block shadow-sm">
             Sign In
           </Link>
         </div>

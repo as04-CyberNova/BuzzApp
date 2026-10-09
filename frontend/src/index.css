@@ -14,72 +14,69 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased selection:bg-primary-500 selection:text-white dark:bg-surface-900 dark:text-slate-100;
+    @apply text-slate-900 antialiased selection:bg-primary-500 selection:text-white dark:text-slate-100 min-h-[100dvh] overflow-x-hidden relative;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #fce7f3 0%, #e0e7ff 50%, #fdf2f8 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+  
+  .dark body {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1e1e2f 50%, #312e81 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 15% 50%, rgba(236, 72, 153, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.15), transparent 25%);
+    z-index: -1;
+    pointer-events: none;
   }
 }
 
 @layer components {
-  .clay-panel {
-    @apply bg-[#f2f4f8] border border-white/60 dark:bg-surface-800 dark:border-white/10;
-    box-shadow: 
-      8px 8px 16px 0px rgba(136, 165, 191, 0.4), 
-      inset -8px -8px 16px 0px rgba(136, 165, 191, 0.4),
-      inset 8px 8px 16px 0px rgba(255, 255, 255, 0.9);
+  .liquid-glass-panel {
+    @apply bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/40 dark:border-white/10;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
   }
 
-  .dark .clay-panel {
-    box-shadow: 
-      8px 8px 16px 0px rgba(0, 0, 0, 0.5), 
-      inset -8px -8px 16px 0px rgba(0, 0, 0, 0.4),
-      inset 8px 8px 16px 0px rgba(255, 255, 255, 0.05);
+  .liquid-glass-btn {
+    @apply relative overflow-hidden bg-primary-500/80 hover:bg-primary-500 text-white backdrop-blur-md transition-all duration-300 px-4 py-3 rounded-2xl font-semibold border border-white/30 dark:border-white/10 shadow-[0_8px_32px_0_rgba(236,72,153,0.3)] hover:shadow-[0_8px_32px_0_rgba(236,72,153,0.5)];
+  }
+  
+  .liquid-glass-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+  }
+  
+  .liquid-glass-btn:hover::before {
+    left: 150%;
   }
 
-  .clay-btn {
-    @apply bg-primary-500 text-white transition-all duration-300 px-4 py-3 rounded-2xl font-semibold;
-    box-shadow: 
-      4px 4px 8px 0px rgba(236, 72, 153, 0.4), 
-      inset -4px -4px 8px 0px rgba(219, 39, 119, 0.6),
-      inset 4px 4px 8px 0px rgba(252, 231, 243, 0.6);
+  .liquid-glass-input {
+    @apply w-full px-4 py-3 bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-2xl outline-none text-slate-800 dark:text-slate-100 transition-all focus:ring-2 focus:ring-primary-500/50 shadow-inner;
   }
 
-  .clay-btn:active {
-    box-shadow: 
-      2px 2px 4px 0px rgba(236, 72, 153, 0.4), 
-      inset 4px 4px 8px 0px rgba(219, 39, 119, 0.6),
-      inset -4px -4px 8px 0px rgba(252, 231, 243, 0.6);
+  .liquid-glass-msg-sender {
+    @apply bg-primary-500/90 text-white backdrop-blur-md border border-white/20 shadow-md;
   }
 
-  .clay-input {
-    @apply w-full px-4 py-3 bg-[#e8ecef] dark:bg-surface-900 border-none rounded-2xl outline-none text-slate-800 dark:text-slate-100 transition-all focus:ring-2 focus:ring-primary-500/50;
-    box-shadow: inset 4px 4px 8px rgba(136, 165, 191, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
-  }
-
-  .dark .clay-input {
-    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
-  }
-
-  .clay-msg-sender {
-    @apply bg-primary-500 text-white shadow-md;
-    box-shadow: 
-      4px 4px 8px 0px rgba(236, 72, 153, 0.3), 
-      inset -4px -4px 8px 0px rgba(219, 39, 119, 0.5),
-      inset 4px 4px 8px 0px rgba(252, 231, 243, 0.5);
-  }
-
-  .clay-msg-receiver {
-    @apply bg-[#f2f4f8] text-slate-800 dark:bg-surface-800 dark:text-slate-100;
-    box-shadow: 
-      4px 4px 8px 0px rgba(136, 165, 191, 0.3), 
-      inset -4px -4px 8px 0px rgba(136, 165, 191, 0.3),
-      inset 4px 4px 8px 0px rgba(255, 255, 255, 0.9);
-  }
-
-  .dark .clay-msg-receiver {
-    box-shadow: 
-      4px 4px 8px 0px rgba(0, 0, 0, 0.4), 
-      inset -4px -4px 8px 0px rgba(0, 0, 0, 0.3),
-      inset 4px 4px 8px 0px rgba(255, 255, 255, 0.05);
+  .liquid-glass-msg-receiver {
+    @apply bg-white/40 dark:bg-black/40 text-slate-800 dark:text-slate-100 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-sm;
   }
 }
 

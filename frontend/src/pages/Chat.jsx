@@ -124,9 +124,9 @@ function Chat() {
   const chatSubtitle = otherUserMsg ? (isOnline ? 'Online' : 'Offline') : 'Waiting for others...';
 
   return (
-    <div className="min-h-[100dvh] bg-slate-50 dark:bg-surface-900 flex flex-col h-[100dvh]">
+    <div className="min-h-[100dvh] bg-transparent flex flex-col h-[100dvh]">
       {/* Navbar */}
-      <nav className="clay-panel flex-none px-6 py-4 flex items-center justify-between border-b-0 rounded-none rounded-b-3xl z-10 sticky top-0">
+      <nav className="liquid-glass-panel flex-none px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between border-b-0 rounded-none rounded-b-3xl z-10 sticky top-0 shadow-md">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-tr from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,10 +145,10 @@ function Chat() {
             onClick={handleClearChat}
             className="px-4 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors flex items-center gap-2"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
-            Clear
+            <span className="hidden sm:inline">Clear</span>
           </button>
           <button 
             onClick={handleLogout}
@@ -180,10 +180,10 @@ function Chat() {
                   </div>
                 </div>
               )}
-              <div className={`max-w-[75%] px-5 py-3 rounded-3xl flex flex-col gap-1 ${
+              <div className={`max-w-[85%] sm:max-w-[75%] px-4 sm:px-5 py-3 rounded-3xl flex flex-col gap-1 ${
                 isCurrentUser 
-                  ? 'clay-msg-sender rounded-br-sm' 
-                  : 'clay-msg-receiver rounded-bl-sm'
+                  ? 'liquid-glass-msg-sender rounded-br-sm' 
+                  : 'liquid-glass-msg-receiver rounded-bl-sm'
               }`}>
                 <span>{msg.content}</span>
                 <span className={`text-[10px] self-end ${isCurrentUser ? 'text-primary-100' : 'text-slate-400'}`}>
@@ -197,19 +197,19 @@ function Chat() {
       </main>
 
       {/* Input Area */}
-      <footer className="clay-panel flex-none p-4 rounded-none rounded-t-3xl border-t-0">
+      <footer className="liquid-glass-panel flex-none p-3 sm:p-4 rounded-none rounded-t-3xl border-t-0 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
         <form onSubmit={handleSend} className="flex gap-2 max-w-4xl mx-auto">
           <input 
             type="text" 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message..." 
-            className="clay-input flex-1 rounded-full px-6 py-4"
+            className="liquid-glass-input flex-1 rounded-full px-5 py-3 sm:px-6 sm:py-4"
             autoComplete="off"
           />
           <button 
             type="submit"
-            className="clay-btn p-4 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="liquid-glass-btn p-3 sm:p-4 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!input.trim()}
           >
             <svg className="w-6 h-6 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
